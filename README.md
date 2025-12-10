@@ -95,35 +95,11 @@ Forking is a GitLab-specific procedure.
 
 ### Install necessary dependencies and check the Node.js version
 
-1. Run the npm install command to install necessary dependencies
+Run the npm install command to install necessary dependencies
 
-   ```bash
-   npm install
-   ```
-
-2. Check you are using the correct Node.js version
-
-   A pseudo RUNCOM file, `.nvmrc`, can be placed in the root directory of a project. This file [sets the Node.js version to be used by that particular project](https://github.com/nvm-sh/nvm#nvmrc).
-
-   Assuming the `pwd` is `/path/to/dxp-component-library`, run
-
-   ```bash
-   nvm use
-   ```
-
-   The command should return something equivalent to the following:
-
-   ```bash
-   Found '/home/<username>/<path>/dxp-component-library/.nvmrc' with version <20>
-   Now using node v20 (npm v10.9.2)
-   ```
-
-   If a `.nvmrc` file is not present in a project’s root directory, the command returns the following:
-
-   ```bash
-   No .nvmrc file found
-   Please see `nvm --help` or https://github.com/nvm-sh/nvm#nvmrc for more information.
-   ```
+```bash
+npm install
+```
 
 ### View components
 
@@ -194,22 +170,23 @@ When this is complete it will create the relevant code files that are needed:
 
 ```
 dxp-components/
-└── 
+└──
   src/
   └── <clean_chosen_folder>/
       └── <layout-name>/
-            └── previews/
-              ├── example.data.json
-              └── preview.html
+            |── previews/
+            | ├── example.data.json
+            | └── preview.html
             ├── static/
-              ├── default.js
-              └── default.scss
+            | ├── default.js
+            | └── default.scss
             ├── build.js
             ├── main.js
             ├── manifest.json
             ├── package-lock
             └── package.json
 ```
+**NOTE:** These are created automatically and can be used for building the tools needed
 
 ### Create a new layout
 
@@ -452,6 +429,7 @@ This project includes the `vermgmt` library, which helps in versioning and deplo
 ```
 npm run vermgmt
 ```
+**Note:** This can also be run through GitHub version control
 
 ## Deploying a component
 
@@ -470,34 +448,3 @@ npm run deploy --name=component_name
 ```
 
 After deployment, add the component to a set. If this is the first deployment, it must be added manually. Subsequent deployments will automatically increment the version in the set.
-
-## Adding styles to the DXP console preview
-
-**NB:** this is an optional step.
-
-By default, your component will not be styled in the DXP console preview. To add styles, follow these steps:
-
-1. Create an additional `preview-dxp.html` file with the following structure:
-
-   ```html
-   <!doctype html>
-   <html lang="en">
-     <head>
-       <meta charset="UTF-8" />
-       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-       <title>DXP preview</title>
-       <link
-         rel="stylesheet"
-         href="cms-domain/__data/assets/git_bridge/123/1234/dist/client.css"
-       />
-     </head>
-     <body>
-       [component://output]
-       <script src="cms-domain/__data/assets/git_bridge/123/1234/dist/client.js"></script>
-     </body>
-   </html>
-   ```
-
-2. Deploy the code to the repository and update the existing GitBridge.
-
-3. Link the styles and scripts hosted via GitBridge to the DXP console preview.
