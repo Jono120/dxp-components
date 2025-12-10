@@ -149,6 +149,12 @@ And open the port:
 
    This port provides a CMS-like preview showing how the component’s fields (for example, string, SquizImage) are displayed in Matrix. It simulates the field setup UI for better context during development.
 
+---
+
+## DXP Authentication
+
+Run `dxp-next auth` in the command prompt or terminal this will open the default browser to authenticate with Squiz DXP.
+
 ## Create a new component
 
 To create a new component, start in the `dxp/component-service` directory and create a new folder with the name of your component. Alternatively, copy an existing one and adjust the names.
@@ -172,6 +178,38 @@ dxp/
 ```
 
 All additional scripts and styles will automatically be included in `src/styles/main.scss` and `src/scripts/main.js`. These files are used to build the final output in the /dist directory, which you can connect through GitBridge.
+
+### Component - Local Development
+
+To create basic or advanced components within Squiz DXP start with `dxp-next cmp init --type <string> <path>` this will allow for an empty folder creation:
+
+- Open the terminal
+- `dxp-next cmp init [options] <path>`
+  - What is the component name?
+  - What is the component displayName?
+  - What is the component description?
+  - What is the component namespace?
+
+When this is complete it will create the relevant code files that are needed:
+
+```
+dxp-components/
+└── 
+  src/
+  └── <clean_chosen_folder>/
+      └── <layout-name>/
+            └── previews/
+              ├── example.data.json
+              └── preview.html
+            ├── static/
+              ├── default.js
+              └── default.scss
+            ├── build.js
+            ├── main.js
+            ├── manifest.json
+            ├── package-lock
+            └── package.json
+```
 
 ### Create a new layout
 

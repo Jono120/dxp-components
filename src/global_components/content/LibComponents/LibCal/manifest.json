@@ -1,0 +1,60 @@
+{
+  "$schema": "http://localhost:3000/schemas/v1.json",
+  "name": "libcal",
+  "namespace": "vuw-libcal-room-booking",
+  "displayName": "LibCal",
+  "description": "For booking study rooms within the library",
+  "version": "0.0.1",
+  "mainFunction": "main",
+  "icon": {
+    "id": "fiber_new",
+    "color": {
+      "type": "enum",
+      "value": "green"
+    }
+  },
+  "functions": [
+    {
+      "name": "main",
+      "entry": "dist/main.js",
+      "input": {},
+      "output": {
+        "responseType": "html",
+        "staticFiles": [
+          {
+            "location": "header",
+            "file": {
+              "type": "css",
+              "filepath": "default.css"
+            }
+          },
+          {
+            "location": "footer",
+            "file": {
+              "type": "js",
+              "filepath": "default.js"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "previews": {
+    "default": {
+      "functionData": {
+        "main": {
+          "inputData": {
+            "type": "file",
+            "path": "previews/example.data.json"
+          },
+          "wrapper": {
+            "path": "previews/preview.html"
+          }
+        }
+      }
+    }
+  },
+  "staticFiles": {
+    "locationRoot": "dist"
+  }
+}
