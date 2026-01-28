@@ -1,0 +1,47 @@
+{
+    "$schema": "http://localhost:3000/schemas/v1.json",
+    "version": "0.0.1",
+    "type" : "edge",
+    "name" : "libsearch",
+    "displayName" : "Library Search Component",
+    "description" : "A component that provides search functionality for the library.",
+    "namespace" : "libsearch",
+    "mainFunction" : "main",
+    "functions": [
+        {
+            "name": "main",
+            "entry": "main.mjs",
+            "input": {
+                "type": "object",
+                "properties": {
+                    "Test": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Test"
+                ]
+            },
+            "output": {
+                "responseType": "html"
+            }
+        }
+    ],
+    "previews": {
+        "default": {
+            "functionData": {
+                "main": {
+                    "inputData": {
+                        "type": "inline",
+                        "value": {
+                            "Test": "Example input"
+                        }
+                    },
+                    "wrapper": {
+                        "path": "preview.html"
+                    }
+                }
+            }
+        }
+    }
+}
