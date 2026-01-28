@@ -199,7 +199,7 @@ dxp/
 └── layouts/
     └── <layout-name>/
         ├── markup.hbs
-        ├── page-layout.yaml
+        ├── manifest.json
         ├── main.html # optional: mock content for preview
         ├── banner.html # optional: mock content for preview
         └──README.md
@@ -207,7 +207,7 @@ dxp/
 
 The two required files are:
 
-- **`page-layout.yaml`** — defines layout metadata, zones, and optional configuration values
+- **`manifest.json`** — defines layout metadata, zones, and optional configuration values
 - **`markup.hbs`** — defines the layout structure using Handlebars syntax
 
 Mock HTML files representing the content for each zone (e.g. `main.html`, `sidebar.html`) can be added to preview the layout locally.
@@ -220,8 +220,7 @@ The command starts a hot‑reloading development server and opens the layout at 
 Basic example:
 
 ```
-export ENABLE_PAGE_LAYOUTS=true
-dxp-next page layouts dev --config ./page-layout.yaml --zones=main=./main.html --stylesheet ./main.css
+dxp-next page layouts dev ./manifest.json --zones=main=./main.html --stylesheet ./main.css
 ```
 
 ### Project structure
@@ -251,10 +250,10 @@ The project structure is straightforward, centered around the `component-service
 
 The repository also contains page layouts under `dxp/layouts`. A layout is defined by two files:
 
-| file               | description                                                                                                              |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `markup.hbs`       | the HTML structure written in Handlebars; it declares the layout skeleton and where zones render.                        |
-| `page-layout.yaml` | the layout setup used by the CMS: layout ID, display name, description (shown in the DXP Console), and zone definitions. |
+| file            | description                                                                                                              |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `markup.hbs`    | the HTML structure written in Handlebars; it declares the layout skeleton and where zones render.                        |
+| `manifest.json` | the layout setup used by the CMS: layout ID, display name, description (shown in the DXP Console), and zone definitions. |
 
 ## Linters and formatters
 
